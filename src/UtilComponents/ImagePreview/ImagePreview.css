@@ -11,6 +11,11 @@
     width: 100%;
 }
 
+.image_preview.STATUS {
+width: 95%;
+left: 2.5%;
+}
+
 .image_preview .preview_Section {
     flex: 1;
     display: flex;

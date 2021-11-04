@@ -78,17 +78,17 @@ function SidebarChat(props) {
             {you && you.profileImagePath ? <img src={you?.profileImagePath} alt="You"></img> : <Avatar />}
             <div className="sidebarChat_info">
                 <h2>{you?.name}</h2>
-                <p>
+                <div>
                     {lastMessage?.by === props.me ? <span>
                         {lastMessage?.messageStatus === "SENT" ? <CheckIcon color={"disabled"} /> : null}
                         {lastMessage?.messageStatus === "RECEIVED" ? <DoneAllIcon color={"disabled"} /> : null}
                         {lastMessage?.messageStatus === "SEEN" ? <DoneAllIcon style={{ color: "#4FC3F7" }} color={"primary"} /> : null}
                     </span> : null}
 
-                    {lastMessage?.type === "text" ? <span className={"msgText"}>{lastMessage?.text.substring(0, 35)}</span> : null}
-                    {lastMessage?.type === "image" ? <span><CameraAltIcon />Photo</span> : null}
-                    {lastMessage?.type === "audio" ? <span ><MicIcon />{lastMessage?.audioDuration}s</span> : null}
-                </p>
+                    {lastMessage?.type === "text" ? <p className={props.chat.unseenCount > 0 ? "unseenMsg" : ""}>{lastMessage?.text.substring(0, 35)}</p> : null}
+                    {lastMessage?.type === "image" ? <p><CameraAltIcon />Photo</p> : null}
+                    {lastMessage?.type === "audio" ? <p ><MicIcon />{lastMessage?.audioDuration}s</p> : null}
+                </div>
             </div>
             <div className="sidebarChar_Right">
 

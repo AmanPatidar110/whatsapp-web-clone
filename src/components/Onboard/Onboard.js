@@ -17,12 +17,14 @@ function Onboard(props) {
     const [preview, setPreview] = useState()
 
 
-    const { setOpenStrip, stripMessage, setStripMessage } = useContext(AppContext)
+    const {isProfileComplete } = useContext(AppContext)
 
     const [user, setUser] = useState({
         name: "",
         file: ""
     })
+
+    let linkStack = useHistory()
 
     useEffect(() => {
         // if(isProfileComplete) return linkStack.push('/')

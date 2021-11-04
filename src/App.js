@@ -18,7 +18,7 @@ import { Fragment } from 'react';
 
 function App() {
 
-  const { userProfile, isLoading, isAuth, isProfileComplete, handleOnboardSubmit, user } = useContext(AppContext);
+  const { userProfile, isLoading, isAuth, handleOnboardSubmit, user } = useContext(AppContext);
   console.log(isLoading);
 
   return (
@@ -39,13 +39,13 @@ function App() {
             </Route>
           }
 
-          {isAuth && !isProfileComplete &&
+          {isAuth &&
             <Route path="/onboard">
               <Onboard handleOnboardSubmit={handleOnboardSubmit} />
             </Route>
           }
 
-          {isAuth && isProfileComplete && 
+          {isAuth  &&  userProfile &&
             <Route exact={true} path="/">
               <ChatRoomContextProvider>
                 <ChatRoom />

@@ -11,7 +11,6 @@ const AppContext = createContext();
 
 export const AppContextProvider = (props) => {
     const [isAuth, setIsAuth] = useState(false);
-    const [isProfileComplete, setIsProfileComplete] = useState(false);
 
     const [userProfile, setUserProfile] = useState();
     const [stripMessage, setStripMessage] = useState("");
@@ -31,31 +30,27 @@ export const AppContextProvider = (props) => {
             if (user) {
                 if (!user) setuser(user);
                 setIsAuth(true);
-                checkUserFunc();
             }
             else {
                 setIsAuth(false);
             }
-            setIsLoading(false);
         });
-    }, [isProfileComplete]);
+    }, []);
 
-    const checkUserFunc = () => {
+    useEffect(() => {
         if (isAuth) {
             setIsLoading(true);
             checkUser()
                 .then((data) => {
                     if (!data.isProfileComplete || data.isNewUser) {
-                        console.log(!data.isProfileComplete, data.isNewUser)
-                        setIsProfileComplete(false);
+                        linkStack.replace('/onboard');
                     }
                     else if (data.isProfileComplete) {
 
                         getUserProfile().then(data => {
                             console.log(data);
                             setUserProfile({ ...data.userObj })
-                            setIsProfileComplete(true);
-                            linkStack.replace('/');
+                            
                         });
                     }
                 })
@@ -68,15 +63,15 @@ export const AppContextProvider = (props) => {
                 .finally(() => {
                     setIsLoading(false);
                 });
-        }
-    }
+        }  
+    }, [isAuth])
 
 
     useEffect(() => {
         if (!isAuth) linkStack.replace('/login');
-        else if (isAuth && !isProfileComplete) linkStack.replace('/onboard');
-        else if (isAuth && userProfile && isProfileComplete) linkStack.replace('/');
-    }, [isAuth, isProfileComplete, user])
+        // else if (isAuth  && !userProfile && !isProfileComplete) linkStack.replace('/onboard');
+        else if (isAuth && userProfile) linkStack.replace('/');
+    }, [isAuth, userProfile])
 
 
 
@@ -96,7 +91,12 @@ export const AppContextProvider = (props) => {
             }
             setOpenStrip(true)
             setStripMessage("Your are successfully registered with us!");
-            setIsProfileComplete(true);
+            setIsLoading(true)
+            getUserProfile().then(data => {
+                console.log(data);
+                setIsAuth(true);
+                setUserProfile({ ...data.userObj })
+            });
 
         } catch (error) {
             console.log(error);
@@ -111,7 +111,6 @@ export const AppContextProvider = (props) => {
     return <AppContext.Provider value={
         {
             isAuth, setIsAuth, user,
-            isProfileComplete, setIsProfileComplete,
             userProfile, setUserProfile,
             stripMessage, setStripMessage, openStrip, setOpenStrip,
             isLoading, setIsLoading,
