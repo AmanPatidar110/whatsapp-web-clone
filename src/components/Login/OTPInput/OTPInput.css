@@ -1,0 +1,38 @@
+
+.login  .login_cardForm.OTPinput > p{
+    width: 80%;
+    text-align: center;
+    margin: 1rem auto 1rem auto;
+    color: rgba(83, 83, 83, 0.849);
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #0AA545;
+    font-weight: bold;
+
+}
+
+.login .login_cardInput.OTPinput {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    width: 70%;
+    height: 2.5rem;
+}
+
+
+.login  .login_cardLogo.OTPinput {
+    margin: 4rem 0  1rem 0;
+}
+
+.login  .login_cardForm.OTPinput .login_cardButton {
+    margin-top: 1rem;
+}
+
+.login  .login_cardForm.OTPinput > p:nth-of-type(2) {
+    color: rgb(255, 113, 137);
+    text-align: right;
+    width: 70%;
+    margin-top: 0.3rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+}

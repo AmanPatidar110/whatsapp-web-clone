@@ -1,0 +1,24 @@
+.MyStatusUpdates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 2rem;
+}
+.MyStatusUpdates .tileTime{
+   font-size: 0.8rem;
+   font-weight: 500;
+}
+
+
+.statusPagebanner .MyStatusUpdates span svg{
+    color: whitesmoke;
+    margin-bottom: 0;
+    margin-right: 0.2rem;
+}
+
+.eyeSvgView {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    color: white;
+}

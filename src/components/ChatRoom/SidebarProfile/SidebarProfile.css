@@ -1,0 +1,167 @@
+.SidebarProfile {
+    overflow: auto;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 20rem;
+    padding-bottom: 0.8rem;
+    position: relative;
+    /* background-color: grey; */
+}
+
+.SidebarProfile .SidebarProfile_Header {
+    position: sticky;
+    z-index: 1000;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 7rem;
+    padding: 2.5rem 1.5rem;
+    padding-top: 5rem;
+    color: white;
+    background-color: #00BFA5;
+    display: flex;
+}
+.SidebarProfile .SidebarProfile_Header .BackButton{
+    cursor: pointer;
+}
+
+.SidebarProfile .SidebarProfile_Header h3 {
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+    font-weight: 500;
+}
+
+.SidebarProfile .myImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15rem;
+}
+
+.myImage .signup_cardLogo {
+    border-radius: 50%;
+    background-color: #dadbd3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 12rem;
+}
+
+.myImage .signup_cardLogo div.hoverEffect {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+
+
+.myImage .signup_cardLogo:hover div.hoverEffect {
+    background-color: #8a8a8ab9;
+    border-radius: 50%;
+}
+
+.myImage .signup_cardLogo:hover .uploader {
+    opacity: 1;
+}
+
+.myImage .signup_cardLogo .personIcon.MuiSvgIcon-root {
+    color: white;
+    height: 75%;
+    width: 75%;
+}
+
+.myImage .signup_cardLogo .profileImg {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.myImage .signup_cardLogo .uploader {
+    position: absolute;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.myImage .signup_cardLogo .uploader p {
+    padding: 0 1rem;
+    text-align: center;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.myImage .signup_cardLogo .uploader .MuiSvgIcon-root {
+    cursor: pointer;
+    color: white;
+    display: block;
+    margin: 0.5rem 0;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.SidebarProfile .NameSection {
+    padding: 1rem 1rem 0.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+}
+
+.SidebarProfile .NameSection>p:nth-child(1) {
+    color: #009688;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.SidebarProfile .NameSection div {
+    width: 100%;
+    color: #585858;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.SidebarProfile .NameSection div svg {
+    font-size: 1.2rem;
+    color: #919191;
+    cursor: pointer;
+}
+
+.SidebarProfile p.Note {
+    width: 100%;
+    /* font-weight: lighter; */
+    color: #a5a5a5ea;
+    font-size: 0.9rem;
+    padding: 1rem 2rem 1.5rem 2rem;
+}
+.SidebarProfile .nameTextField{
+   position: relative
+}
+.SidebarProfile .doneButton{
+   position: absolute;
+   left: 90%;
+}
+
+
+.SidebarProfile  .MuiFormControl-root.MuiTextField-root .MuiInput-underline:before, .MuiInput-underline:after {
+    border-bottom: 2px solid #00BFA5;
+}
+.SidebarProfile  .MuiFormControl-root.MuiTextField-root  .MuiInput-underline:after {
+    width: 100%;
+    border-bottom: none;
+}

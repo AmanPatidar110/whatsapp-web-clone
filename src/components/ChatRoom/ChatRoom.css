@@ -1,0 +1,25 @@
+
+.app_body {
+    display: flex;
+    background-color: #ededed;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    min-width: 48rem;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+    overflow:  hidden auto;
+  }
+
+  
+@media (min-width: 1440px) {
+  .app_body {
+    margin-top: -5vh;
+    height: 90vh;
+    width: 91vw;
+  }
+}
+
+
+ 
+  
+  

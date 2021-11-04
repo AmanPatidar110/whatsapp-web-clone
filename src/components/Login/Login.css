@@ -1,0 +1,106 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+.login  .login_card{
+    height: 60vh;
+    width: 30vw;
+    min-width: 25rem;
+    min-height: 30rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+    border-radius: 1.2rem;
+    position: relative;
+    /* font-family: 'Roboto', sans-serif; */
+}
+
+.login  .login_card .ArrowBack{
+   position: absolute;
+    left: 2rem;
+    top: 2rem;
+    color: rgb(71, 71, 71);
+}
+
+.login  .login_cardLogo {
+    height: 8rem;
+    width: 10.5rem;
+    margin: 4rem 0 3rem 0;
+    margin-top: 5rem;
+}
+
+.login  .login_cardLogo img {
+    height: 100%;
+    width: 100%;
+}
+
+
+.login  .react-tel-input, .login_cardInput {
+    display: flex;
+    padding: 0.2rem 0.5rem;
+    border: 2px solid #dadbd3;
+    border-radius: 0.1rem;
+    color: gray;
+    width: 90%;
+}
+
+.login .react-tel-input > input, .login .login_cardInput  > input {
+    text-align: center;
+    outline: none;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login .react-tel-input > .flag-dropdown {
+    left: 0;
+    border: none !important; 
+    background: none !important;
+    /* color: blue !important; */
+}
+
+
+.login  .login_cardForm {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.login  .login_cardForm .login_cardButton {
+    outline: none;
+    margin-top: 3rem;
+    padding: 0.7rem 0;
+    width: 8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: whitesmoke;
+    border: none;
+    background-color: #009F01;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: all 100ms ease-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login .login_cardForm .login_cardButton:hover, .login_cardButton:active {
+    background-color: #009f00f1;
+    box-shadow: 1px 4px 10px -6px rgba(0, 0, 0, 0.75);
+    
+    /* transform: scale(1.1); */
+}
+
+.login .login_cardForm .login_cardButton:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #DADBD3;
+}

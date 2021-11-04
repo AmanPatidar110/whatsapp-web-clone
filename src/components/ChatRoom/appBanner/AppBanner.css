@@ -1,0 +1,28 @@
+.appBanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    min-width: 22rem;
+    position: relative;
+    background-color: #F8F9FA;
+}
+
+
+.appBanner img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+
+.appBanner h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    margin-top: 1rem;
+    font-weight: 400;
+    color: rgba(75, 75, 75, 0.89);
+    font-size: 1.5rem;
+    text-align: center;
+    width: 90%;
+}

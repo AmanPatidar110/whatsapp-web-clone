@@ -1,0 +1,68 @@
+.SidebarFriendProfile {
+    overflow: scroll;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 20rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+    border-left: 0.5px solid lightgrey;
+
+    background-image: linear-gradient(180deg, #EDEDED ,#ededede1) ;
+}
+
+.SidebarFriendProfile header {
+    padding: 1.1rem 2rem;
+    display: flex;
+    color: rgba(34, 34, 34, 0.815);
+    font-weight: lighter;
+    background-color: #EDEDED;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.SidebarFriendProfile header .closeIcon{
+   cursor: pointer;
+}
+
+.SidebarFriendProfile header  h3 {
+    font-weight: lighter;
+    margin-left: 2rem;
+}
+
+.SidebarFriendProfile .userTile {
+    background-color: white;
+    padding: 0 0 0  2rem;
+    color: rgb(31, 31, 31);
+    border-bottom: 1px solid lightgray;
+    /* box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.096); */
+}
+
+.SidebarFriendProfile .userTile img {
+ height: 10rem;
+ width: 10rem; 
+ border-radius: 50%; 
+ display: block; 
+ margin: 2rem auto 0 auto; 
+}
+
+.SidebarFriendProfile .userTile p{
+    /* text-align: center; */
+   padding:  1rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.SidebarFriendProfile .userTile p span{
+  margin-right: 1.5rem;
+}
+
+@media (max-width: 1200) {
+    .SidebarFriendProfile {
+        width: 70%;
+    }
+}

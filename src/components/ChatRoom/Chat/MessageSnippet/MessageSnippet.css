@@ -1,0 +1,108 @@
+.MessageSnippet img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 5px;
+}
+
+.MessageSnippet {
+    position: relative;
+    width: fit-content;
+    max-width: 15rem;
+    min-width: 4rem;
+}
+.MessageSnippet:hover .MessageDropdownMenu .messageDropDownIcon {
+    display: block;
+}
+
+
+.MessageSnippet .message {
+    word-wrap: break-word;
+    position: relative;
+    margin: 0.1rem 0.5rem 0.2rem 0.2rem;
+}
+
+.chat_body .chat_messageMe.MessageSnippet .message {
+    margin-right: 2rem;
+} 
+
+.MessageSnippet .msgImg {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.MessageSnippet .msgImg img {
+    width: 100%;
+    margin: 0.2rem 0rem 0.3rem 0rem;
+}
+
+.chat_body .chat_message {
+    font-size: 1rem;
+    width: fit-content;
+    padding: 0.2rem 0.3rem 0.7rem 0.3rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.chat_body .chat_messageMe .sender_svg, .chat_messageMe .chat_name {
+    display: none;
+}
+
+
+.chat_body .chat_messageMe {
+
+    margin-left: auto;
+    background-color: #dcf8c6;
+    border-top-right-radius: 0px !important;
+}
+
+.chat_body .chat_name {
+    position: absolute;
+    top: -1.2rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #009f01;
+}
+
+.chat_body .MessageSnippet .chat_timestamp {
+    font-size: 0.6rem;
+    /* line-height: 0; */
+    color: #02020273;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    position: relative;
+    float: right;
+    bottom: 5px;
+    /* margin-top: 1rem; */
+}
+
+.chat_body .MessageSnippet .chat_timestamp span {
+    margin-left: 0.2rem;
+    display: none;
+}
+
+.chat_body .chat_messageMe .chat_timestamp span {
+    display: block;
+}
+.chat_body .MessageSnippet .chat_timestamp span svg {
+    font-size: 0.9rem;
+}
+
+.chat_body .sender_svg {
+    position: absolute;
+    right: -8px;
+    top: -2px; 
+    display: none;
+}
+
+.chat_body .sender_svg > svg {
+    color: #dcf8c6;
+}
+
+.chat_body .chat_message_cornerSvg > .sender_svg {
+    display: block;
+}
+

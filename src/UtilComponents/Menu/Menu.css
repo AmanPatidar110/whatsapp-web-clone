@@ -1,0 +1,17 @@
+.chatDropdownMnu  {
+    display: flex;
+    right: -2px;
+    top: -4pxpx;
+    position: absolute;
+    color: #a7a7a7;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+div#long-menu
+{
+    top: 0px !important;
+    right: 0px !important;
+}

@@ -1,0 +1,130 @@
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+.signup_card{
+    height: 60vh;
+    width: 30vw;
+    min-width: 25rem;
+    min-height: 30rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+    border-radius: 1.2rem;
+    /* font-family: 'Roboto', sans-serif; */
+
+}
+
+
+
+.signup_cardLogo {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    background-color: #dadbd3;
+    margin: 4rem;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.file-upload{
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.signup_cardLogo:hover {
+    background-color: rgba(75, 75, 75, 0.7);
+}
+
+.signup_cardLogo:hover .uploader.MuiSvgIcon-root {
+    display: block;
+}
+
+.signup_cardLogo .personIcon.MuiSvgIcon-root  {
+    color: white;
+    height: 75%;
+    width: 75%;
+}
+
+.signup_cardLogo .profileImg {
+    height: 98%;
+    width: 98%;
+    border-radius: 50%;
+}
+
+.signup_cardLogo .uploader.MuiSvgIcon-root  {
+    position: absolute;
+    color: rgb(51, 51, 51);
+    bottom: 7px;
+    display: none;
+    cursor: pointer;
+}
+
+
+.signup_cardInput {
+    display: flex;
+    padding: 0.2rem 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #dadbd3;
+    border-radius: 0.1rem;
+    color: gray;
+}
+
+.signup_cardInput  input {
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.signup_cardInput > input:focus {
+    background-color: white;
+}
+
+
+.signup_cardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup_cardForm .signup_cardButton {
+    outline: none;
+    margin-top: 3rem;
+    padding: 0.5rem;
+    width: 8rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: whitesmoke;
+    border: none;
+    background-color: rgb(0, 159, 1);
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: all 100ms ease-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.signup_cardForm .signup_cardButton:hover, .signup_cardButton:active {
+    background-color: rgb(0, 148, 0);
+    box-shadow: 1px 4px 10px -6px rgba(0, 0, 0, 0.75);
+
+    /* transform: scale(1.1); */
+}
+

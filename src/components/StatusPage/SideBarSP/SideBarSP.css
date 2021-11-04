@@ -1,0 +1,47 @@
+.SideBarSP {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 20rem;
+    background-color: #141414;
+    color: white;
+}
+
+.SideBarSP .SidebarProfile_Header {
+    position: sticky;
+    z-index: 1000;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 3rem;
+    position: relative;
+    z-index: 0;
+}
+
+.SideBarSP .SidebarProfile_Header .addStatusButton{
+   position: absolute;
+   right: 1rem;
+   top: 4.1rem;
+   cursor: pointer;
+   color: #c0c0c0c9;
+}
+
+
+.SideBarSP .sidebarTilesWrapper {
+    overflow: auto;
+    padding: 0.5rem 0;
+}
+
+.SideBarSP .sidebarSeperator {
+    border-top: 1px solid #303030;
+    margin: 0.5rem 1rem;
+    margin-top: 1rem;
+}
+
+.SideBarSP .sidebarSeperator p{
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: lighter;
+    color: #979797;
+}

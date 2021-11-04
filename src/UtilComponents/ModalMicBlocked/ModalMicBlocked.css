@@ -1,0 +1,45 @@
+.backdrop {
+   background-color: #fbfaf9e0;
+   opacity: 1;
+}
+
+.Modal.MicBLockedModal {
+   /* box-shadow: none;
+   background-color: transparent; */
+   left: 25%;
+   width: 50%;
+   max-width: fit-content;
+   padding: 1.5rem;
+   
+}
+
+.Modal.MicBLockedModal div .confirm_prompt {
+   font-size: 0.9rem;
+   margin-top: 1rem;
+   color: grey;
+   font-family: 'Ubuntu', sans-serif;
+   font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+
+.Modal.MicBLockedModal .login_cardForm button {
+   background-color: #08ac47;
+   align-self: flex-end;
+   font-size: 1rem;
+   width: 8rem;
+   font-weight: lighter;
+}
+
+.Modal.MicBLockedModal div h4 {
+   text-align: left;
+   width: 100%;
+   font-size: 1.3rem;
+   font-weight: 400;
+   color: rgba(85, 85, 85, 0.911);
+}
+
+.chrome-media-icon {
+   width: 20px;
+   height: 17px;
+   display: inline-block;
+   background: center / contain no-repeat url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAiCAMAAAAau2s5AAAAMFBMVEX///+fn59tbW3Q0NDz8/OIiIiQkJCHh4f21s/idFzgYkbjc1zlgm/zx8D0x8HhalBJdsgxAAAAiUlEQVR42uXQQQvDMAiGYZOtbWJM+v//bZXCcAmoh17G3oOnB4QP/rmU517AvReYl5K4LQB3cTkCxYUguxA8xPlQeg7uaj0TsotBgFLxUy0GbKiqBsSvHEj3cSFBRxxAM0wTFNQ7DNRwDW/JLgi7D8UN/u5DgiGYTKjncaDKhKd2zYClKVfgZ7oAH+EJ3GvFORkAAAAASUVORK5CYII=')
+}

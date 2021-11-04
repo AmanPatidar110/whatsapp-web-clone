@@ -1,0 +1,101 @@
+
+.MessageSnippet.AudioSnippet {
+    position: relative;
+    max-width: 20rem;
+    padding: 0.5rem;
+}
+
+.MessageSnippet .message.AudioMessage {
+    width: 20rem;
+    height: 3rem;
+    max-width: 30rem;
+    display: flex;
+    align-items: center;
+}
+
+.message.AudioMessage img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.message.AudioMessage .MicIcon {
+    position: absolute;
+    bottom: -0.5rem;
+    left: 1.5rem;
+    width: 1.8rem;
+}
+
+.MessageSnippet.AudioSnippet  .message.AudioMessage .MicIcon>svg{
+    height: 100%;
+    width: 100%;
+}
+.MessageSnippet.AudioSnippet  .message.AudioMessage .MicIcon>svg>path{
+    color: #5e5e5e;
+    stroke:  #dcf8c6;
+    height: 100%;
+    width: 100%;
+}
+
+.message.AudioMessage  span.Playloader.MuiCircularProgress-root {
+    position: absolute;
+    bottom: 8px;
+    left: 3.6rem;
+    height: 2rem !important;
+    width: 2rem !important;
+}
+.MessageSnippet.AudioSnippet  .message.AudioMessage  span.Playloader.MuiCircularProgress-root>svg{
+    height: 100%;
+    color: #5e5e5e !important;
+    width: 100%;
+}
+
+.message.AudioMessage span.css-hovie8-MuiSlider-root {
+    position: absolute;
+    z-index: 1;
+    bottom: 8px;
+    left: 6.5rem;
+    width: 60%;
+}
+
+.message.AudioMessage span.css-hovie8-MuiSlider-root span.MuiSlider-rail{
+    color: #88967D;
+    width: 100%;
+}
+.message.AudioMessage span.css-hovie8-MuiSlider-root span.MuiSlider-thumbColorPrimary,
+.message.AudioMessage span.css-hovie8-MuiSlider-root span.MuiSlider-track {
+    color: #88967D;
+}
+
+.message.AudioMessage button.MuiButtonBase-root {
+    position: absolute;
+    z-index: 1;
+    width: 2rem;
+    height: 2rem;
+    bottom: 7px;
+    left: 3.5rem;
+    padding: 0;
+}
+
+.message.AudioMessage button.MuiButtonBase-root:hover {
+    background-color: none;
+}
+
+.message.AudioMessage button.MuiButtonBase-root svg {
+    color: #88967D;
+    height: 100%;
+}
+
+.MessageSnippet.AudioSnippet .message.AudioMessage div.MuiBox-root  {
+    position: relative;
+    bottom: -2rem;
+    left: 3.3rem;
+}
+
+
+
+.MessageSnippet.AudioSnippet .chat_timestamp {
+    
+    bottom: 9px;
+    /* margin-top: 1rem; */
+}

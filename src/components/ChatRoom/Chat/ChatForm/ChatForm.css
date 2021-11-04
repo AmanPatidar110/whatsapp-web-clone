@@ -1,0 +1,115 @@
+.chat_footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    border-top: 1px solid lightgray;
+    padding: 0 0.5rem;
+}
+
+.chat_footer>form {
+    flex: 1;
+    display: flex;
+}
+
+.chat_footer>input {
+    flex: 1;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    padding: 0.6rem;
+}
+
+.chat_footer>form>button {
+    display: none;
+}
+
+.chat_footer .MuiSvgIcon-root {
+    margin: 0.5rem;
+    color: gray;
+    cursor: pointer;
+}
+
+.add_img {
+    /* width: 2rem; */
+    /* margin: 0rem 0.5rem; */
+    margin-top: 0.2rem;
+    margin-right: 0.3rem;
+    color: #808080;
+    cursor: pointer;
+}
+
+.add_img .file-upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.chat_footer .emojiPicker {
+    position: absolute;
+    bottom: 4.2rem;
+    left: 1rem;
+}
+
+.chat_footer .AudioRecordingPanel {
+    display: flex;
+    padding: 0 1rem;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.chat_footer .AudioRecordingPanel .recordCancelBtn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid #e86763;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat_footer .AudioRecordingPanel .recordCancelBtn svg {
+    color: #e86763;
+}
+
+.chat_footer .AudioRecordingPanel .recordingTimer {
+    width: 4rem;
+    height: 100%;
+    color: gray;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.chat_footer .AudioRecordingPanel .recordSendBtn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid #37d87e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat_footer .AudioRecordingPanel .recordSendBtn svg {
+    color: #37d87e;
+}
+
+.chat_footer .AudioRecordingPanel .recordCancelBtn:hover {
+    background-color: #e86763;
+}
+
+
+.chat_footer .AudioRecordingPanel .recordSendBtn:hover {
+    background-color: #37d87e;
+}
+
+.chat_footer .AudioRecordingPanel .recordSendBtn:hover svg, .chat_footer .AudioRecordingPanel .recordCancelBtn:hover svg {
+    color: white;
+}

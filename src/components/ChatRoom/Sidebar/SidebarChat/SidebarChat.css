@@ -1,0 +1,108 @@
+.sidebarChat {
+    display: flex;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 1rem;
+    position: relative;
+    height: 5rem;
+}
+
+.sidebarChat img {
+    height: 3.3rem;
+    width: 3.3rem;
+    border-radius: 50%;
+}
+
+.sidebarChat:hover {
+    background-color: #f3f3f3;
+}
+
+.sidebarChat:hover  .ArrowDownIcon {
+        display: block;
+}
+
+.sidebarChat_info {
+    margin-left: 1rem;
+    overflow: hidden;
+    max-width: 70%;
+    /* text-overflow: ellipsis;
+    white-space: nowrap; */
+}
+
+ 
+
+.sidebarChat_info>h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.sidebarChat_info>p {
+    display: flex;
+    align-items: center;
+
+}
+
+.sidebarChat_info>p>span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: gray;
+    font-size: 1rem;
+    margin-right: 0.2rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.sidebarChat_info>p>span>svg {
+    font-size: 1.1rem;
+    color: gray;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebarChat_time {
+    min-width: 3.5rem;
+    text-align: end;
+    font-size: 12px;
+    color: #02020073;
+    margin: 0.5rem 0;
+}
+
+
+.sidebarChat .ArrowDownIcon  {
+    display: none;
+    color: gray;
+}
+
+.sidebarChat .sidebarChar_Right {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    right: 1rem;
+    top: 0;
+    height: 100%;
+    width: fit-content;
+}
+.sidebarChat .sidebarChar_Right .UnreadMessages {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #06D755;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,0 +1,20 @@
+.App .MuiLinearProgress-root {
+    background-color: rgb(186 186 186);
+}
+
+.App .ProgressBar .login_cardLogo {
+    display: block;
+    margin:0 auto 2rem auto;
+    height: 8rem;
+    width: 10.5rem;
+}
+
+.App .ProgressBar .login_cardLogo img {
+    width: 100%;
+    height: 100%;
+}
+
+.App .ProgressBar .MuiLinearProgress-bar {
+    background-color: #068a04;
+}
+

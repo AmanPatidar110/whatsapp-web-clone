@@ -1,0 +1,133 @@
+.Modal {
+    position: absolute;
+    z-index: 500;
+
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.253);
+    border-radius: 8px;
+    
+    width: 30%;
+    top: 30%;
+    left: 50%;
+    padding: 1rem;
+    transition: all 0.4s ease-out;
+
+
+    min-width: 10rem;
+    max-width: 20rem;
+    /* box-shadow: 1px 4px 20px -6px rgba(0, 0, 0, 0.75); */
+   
+}
+
+.Backdrop{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0.5;
+}
+
+
+
+
+
+.Modal  .login_cardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Modal  .login_cardForm .login_cardButton {
+    outline: none;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    width: 8rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: whitesmoke;
+    border: none;
+    background-color: #BFC2BD;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: all 100ms ease-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Modal  .login_cardForm .login_cardButton:hover, .login_cardButton:active {
+    background-color: rgb(0, 148, 0);
+    box-shadow: 1px 4px 10px -6px rgba(0, 0, 0, 0.75);
+
+    /* transform: scale(1.1); */
+}
+
+
+
+.Modal .login_card{
+   
+}
+
+
+
+
+.Modal .react-tel-input, .login_cardInput {
+    display: flex;
+    padding: 0.2rem 0.5rem;
+    border: 2px solid #dadbd3;
+    border-radius: 0.1rem;
+    color: gray;
+}
+
+.Modal .react-tel-input > input, .login .login_cardInput  > input {
+    text-align: center;
+    outline: none;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Modal .react-tel-input > .flag-dropdown {
+    left: 0;
+    border: none !important; 
+    background: none !important;
+    /* color: blue !important; */
+}
+
+
+.Modal  .login_cardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Modal  .login_cardForm .login_cardButton {
+    outline: none;
+    margin-top: 3rem;
+    padding: 0.7rem 0;
+    width: 8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: whitesmoke;
+    border: none;
+    background-color: #009F01;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: all 100ms ease-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Modal.login_cardForm .login_cardButton:hover, .login_cardButton:active {
+    background-color: #009f00f1;
+    box-shadow: 1px 4px 10px -6px rgba(0, 0, 0, 0.75);
+    
+    /* transform: scale(1.1); */
+}
+
+.login .login_cardForm .login_cardButton:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #DADBD3;
+}
