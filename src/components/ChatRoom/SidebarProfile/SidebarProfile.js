@@ -34,6 +34,19 @@ function SidebarProfile(props) {
             return
         }
         setSelectedFile(e.target.files[0])
+        const typeArray = [
+            'image/png',
+            'image/jpeg',
+            'image/jpg',
+
+        ]
+        const fileType = e.target.files[0].type;
+
+        if (!typeArray.includes(fileType)) {
+            setOpenStrip(true);
+            setStripMessage("Please select appropriate image file type");
+            return;
+        } 
         try {
             const response = await putProfileImage(e.target.files[0]);
             if (response.status === 200) {
@@ -101,7 +114,7 @@ function SidebarProfile(props) {
                 <h3>Profile</h3>
             </div>
             <div className="myImage">
-                <div className="signup_cardLogo">
+                <div className="cardLogo">
                     <div className="hoverEffect"></div>
                     <input ref={fileInputRef} className="file-upload" hidden={true} type="file" onChange={(e) => onFileChange(e)} />
 

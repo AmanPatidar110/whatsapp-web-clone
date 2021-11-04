@@ -25,8 +25,8 @@ export const AppContextProvider = (props) => {
 
     useEffect(() => {
 
+        setIsLoading(true);
         firebase.auth().onAuthStateChanged((user) => {
-            setIsLoading(true);
             if (user) {
                 if (!user) setuser(user);
                 setIsAuth(true);
@@ -36,17 +36,17 @@ export const AppContextProvider = (props) => {
             }
         });
     }, []);
-
+    
     useEffect(() => {
         if (isAuth) {
             setIsLoading(true);
             checkUser()
-                .then((data) => {
-                    if (!data.isProfileComplete || data.isNewUser) {
-                        linkStack.replace('/onboard');
-                    }
+            .then((data) => {
+                if (!data.isProfileComplete || data.isNewUser) {
+                    linkStack.replace('/onboard');
+                }
                     else if (data.isProfileComplete) {
-
+                        
                         getUserProfile().then(data => {
                             console.log(data);
                             setUserProfile({ ...data.userObj })
@@ -66,11 +66,16 @@ export const AppContextProvider = (props) => {
         }  
     }, [isAuth])
 
-
+    
     useEffect(() => {
+        setIsLoading(false);
         if (!isAuth) linkStack.replace('/login');
         // else if (isAuth  && !userProfile && !isProfileComplete) linkStack.replace('/onboard');
-        else if (isAuth && userProfile) linkStack.replace('/');
+        else if (isAuth && userProfile){ 
+            linkStack.replace('/')
+            
+            setIsLoading(false);
+        };
     }, [isAuth, userProfile])
 
 
@@ -96,6 +101,7 @@ export const AppContextProvider = (props) => {
                 console.log(data);
                 setIsAuth(true);
                 setUserProfile({ ...data.userObj })
+                
             });
 
         } catch (error) {

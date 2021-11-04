@@ -86,8 +86,8 @@ function SidebarChat(props) {
                     </span> : null}
 
                     {lastMessage?.type === "text" ? <p className={props.chat.unseenCount > 0 ? "unseenMsg" : ""}>{lastMessage?.text.substring(0, 35)}</p> : null}
-                    {lastMessage?.type === "image" ? <p><CameraAltIcon />Photo</p> : null}
-                    {lastMessage?.type === "audio" ? <p ><MicIcon />{lastMessage?.audioDuration}s</p> : null}
+                    {lastMessage?.type === "image" ? <p className="media"><CameraAltIcon />Photo</p> : null}
+                    {lastMessage?.type === "audio" ? <p className="media"><MicIcon />{lastMessage?.audioDuration}s</p> : null}
                 </div>
             </div>
             <div className="sidebarChar_Right">

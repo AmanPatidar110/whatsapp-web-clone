@@ -42,7 +42,7 @@
     height: 15rem;
 }
 
-.myImage .signup_cardLogo {
+.myImage .cardLogo {
     border-radius: 50%;
     background-color: #dadbd3;
     display: flex;
@@ -51,9 +51,12 @@
     align-items: center;
     width: 12rem;
     height: 12rem;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
 }
 
-.myImage .signup_cardLogo div.hoverEffect {
+.myImage .cardLogo div.hoverEffect {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -62,28 +65,31 @@
 
 
 
-.myImage .signup_cardLogo:hover div.hoverEffect {
+.myImage cardLogo:hover div.hoverEffect {
     background-color: #8a8a8ab9;
     border-radius: 50%;
 }
 
-.myImage .signup_cardLogo:hover .uploader {
+.myImage .cardLogo:hover .uploader {
     opacity: 1;
+    background-color: #00000075;
 }
 
-.myImage .signup_cardLogo .personIcon.MuiSvgIcon-root {
+.myImage .cardLogo .personIcon.MuiSvgIcon-root {
     color: white;
     height: 75%;
     width: 75%;
 }
 
-.myImage .signup_cardLogo .profileImg {
+.myImage .cardLogo .profileImg {
     height: 100%;
     width: 100%;
     border-radius: 50%;
+    visibility: visible;
+    object-fit: cover;
 }
 
-.myImage .signup_cardLogo .uploader {
+.myImage .cardLogo .uploader {
     position: absolute;
     opacity: 0;
     display: flex;
@@ -95,7 +101,7 @@
     cursor: pointer;
 }
 
-.myImage .signup_cardLogo .uploader p {
+.myImage .cardLogo .uploader p {
     padding: 0 1rem;
     text-align: center;
     color: white;
@@ -103,7 +109,7 @@
     cursor: pointer;
 }
 
-.myImage .signup_cardLogo .uploader .MuiSvgIcon-root {
+.myImage .cardLogo .uploader .MuiSvgIcon-root {
     cursor: pointer;
     color: white;
     display: block;
