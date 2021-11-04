@@ -38,7 +38,7 @@ export const AppContextProvider = (props) => {
     }, []);
     
     useEffect(() => {
-        if (isAuth) {
+        if (isAuth && user) {
             setIsLoading(true);
             checkUser()
             .then((data) => {
@@ -64,7 +64,7 @@ export const AppContextProvider = (props) => {
                     setIsLoading(false);
                 });
         }  
-    }, [isAuth])
+    }, [isAuth, user])
 
     
     useEffect(() => {
