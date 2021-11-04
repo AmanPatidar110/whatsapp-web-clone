@@ -85,7 +85,7 @@ function SidebarChat(props) {
                         {lastMessage?.messageStatus === "SEEN" ? <DoneAllIcon style={{ color: "#4FC3F7" }} color={"primary"} /> : null}
                     </span> : null}
 
-                    {lastMessage?.type === "text" ? <span>{lastMessage?.text}</span> : null}
+                    {lastMessage?.type === "text" ? <span className={"msgText"}>{lastMessage?.text.substring(0, 35)}</span> : null}
                     {lastMessage?.type === "image" ? <span><CameraAltIcon />Photo</span> : null}
                     {lastMessage?.type === "audio" ? <span ><MicIcon />{lastMessage?.audioDuration}s</span> : null}
                 </p>
@@ -96,7 +96,7 @@ function SidebarChat(props) {
                     {updatedAt}
                 </div>
 
-                <div style={{ display: "flex" }} >
+                <div className="popUpBox" >
                     {props.chat.unseenCount ? <span className="UnreadMessages" >{props.chat.unseenCount}</span> : null}
                     <KeyboardArrowDownIcon className="ArrowDownIcon" />
                 </div>
