@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect, Fragment } from 'react';
+import { React, useState, useContext, useEffect, Fragment, memo } from 'react';
 
 
 import 'react-phone-input-2/lib/style.css'
@@ -142,4 +142,4 @@ function ModalDeleteMessage() {
     )
 }
 
-export default ModalDeleteMessage
+export default memo(ModalDeleteMessage)

@@ -1,15 +1,15 @@
-.MessageDropdownMenu  {
+.MessageDropdownMenu {
     display: flex;
     right: 0px;
     top: 0px;
     position: absolute;
     color: #a7a7a7;
     justify-content: center;
-    align-items: center;
     width: 1.5rem;
     height: 1.5rem;
 }
-.MessageDropdownMenu  .Backdrop{
+
+.MessageDropdownMenu .Backdrop {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -19,14 +19,13 @@
     background-color: black;
     opacity: 0.1;
 }
-.MessageDropdownMenu  .messageDropDownIcon{
+
+.MessageDropdownMenu .messageDropDownIcon {
     position: absolute;
     display: none;
     width: 1rem;
     height: 1rem;
-    
 }
-
 
 .MessageDropdownMenu button.MuiIconButton-root {
     width: 100%;
@@ -42,9 +41,7 @@
     right: 5px;
     z-index: 150;
     box-shadow: 0px 2px 5px 2px #00000030;
-    /* display: none; */
 }
-
 
 .MessageDropdownMenu button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.messageDropDownIcon {
     width: 100%;
@@ -52,14 +49,17 @@
     padding: 0;
 }
 
-.MessageDropdownMenu 
-.MenuPaper > li.MuiMenuItem-root.MuiMenuItem-gutters {
-   padding-top: 1rem;
-   font-size: 0.9rem;
-   color: gray;
+.MessageDropdownMenu .MenuPaper>li.MuiMenuItem-root.MuiMenuItem-gutters {
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    color: gray;
+    width: 100%;
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.MessageDropdownMenu 
-.MenuPaper .MuiMenuItem-root.MuiMenuItem-gutters:last-child {
+.MessageDropdownMenu .MenuPaper .MuiMenuItem-root.MuiMenuItem-gutters:last-child {
     padding-bottom: 1rem;
 }

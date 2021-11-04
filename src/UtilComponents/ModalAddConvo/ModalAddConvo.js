@@ -1,4 +1,4 @@
-import { React, useState, useContext, Fragment } from 'react';
+import { React, useState, useContext, Fragment, memo } from 'react';
 
 import './ModalAddConvo.css';
 
@@ -84,4 +84,4 @@ const ModalAddConvo = () => {
         </Fragment>)
 }
 
-export default ModalAddConvo;
+export default memo(ModalAddConvo);

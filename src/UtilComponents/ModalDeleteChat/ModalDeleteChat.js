@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect, Fragment } from 'react';
+import { React, useState, useContext, useEffect, Fragment, memo } from 'react';
 import './ModalDeleteChat.css';
 
 
@@ -137,4 +137,4 @@ function ModalDeleteChat() {
     )
 }
 
-export default ModalDeleteChat
+export default memo(ModalDeleteChat)

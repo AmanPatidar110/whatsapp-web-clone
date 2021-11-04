@@ -87,7 +87,7 @@ export default function LongMenu(props) {
             >
                 {options.map((option) => (
                     <MenuItem key={option} style={{
-                        fontSize: "0.8rem",
+                        fontSize: "0.9rem",
                         color: "gray"
                     }}
                         onClick={() => selectOption(option)}

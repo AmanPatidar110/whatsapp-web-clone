@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect, useRef, memo } from 'react';
 import './Carousel.css';
 
 import ClearIcon from '@material-ui/icons/Clear';
@@ -79,7 +79,7 @@ function Carousel() {
         
         let timeStamp;
         timeStamp = new Date(filteredMsgs[viewIndex]?.createdAt);
-        console.log(y)
+
 
         return (
             <div className="Carousel"  style={{
@@ -142,4 +142,4 @@ function Carousel() {
     )
 }
 
-export default Carousel;
+export default memo(Carousel);

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef, createContext } from 'react';
+import React, { useContext, useState, useEffect, useRef, createContext, memo } from 'react';
 import './StatusPage.css';
 
 import ClearIcon from '@material-ui/icons/Clear';
@@ -138,4 +138,4 @@ function StatusPage() {
     )
 }
 
-export default StatusPage
+export default memo(StatusPage);

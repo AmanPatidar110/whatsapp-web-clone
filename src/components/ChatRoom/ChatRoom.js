@@ -37,7 +37,7 @@ const ChatRoom = (props) => {
         selectedConvo,
     } = useContext(ChatRoomContext);
 
-    console.log(selectedConvo, "AAAAAAAAAAAAAAAAAAAAAAA");
+
 
     return (
         <div className="app_body">
