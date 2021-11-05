@@ -13,7 +13,6 @@ import AppContext from './Contexts/app-context';
 import 'firebase/auth';
 import { ChatRoomContextProvider } from './Contexts/chatRoom-context';
 import Onboard from './components/Onboard/Onboard';
-import { Fragment } from 'react';
 
 
 function App() {

@@ -37,21 +37,21 @@ export const AppContextProvider = (props) => {
             }
         });
     }, []);
-    
+
     useEffect(() => {
         if (isAuth) {
             setIsLoading(true);
             checkUser()
-            .then((data) => {
-                if (!data.isProfileComplete || data.isNewUser) {
-                    linkStack.replace('/onboard');
-                }
+                .then((data) => {
+                    if (!data.isProfileComplete || data.isNewUser) {
+                        linkStack.replace('/onboard');
+                    }
                     else if (data.isProfileComplete) {
-                        
+
                         getUserProfile().then(data => {
                             console.log(data);
                             setUserProfile({ ...data.userObj })
-                            
+
                         });
                     }
                 })
@@ -64,15 +64,15 @@ export const AppContextProvider = (props) => {
                 .finally(() => {
                     setIsLoading(false);
                 });
-        }  
+        }
     }, [isAuth, user])
 
-    
+
     useEffect(() => {
         if (isAuth !== undefined && !isAuth) linkStack.replace('/login');
         // else if (isAuth  && !userProfile && !isProfileComplete) linkStack.replace('/onboard');
-        else if (isAuth && userProfile){ 
-            linkStack.replace('/')  
+        else if (isAuth && userProfile) {
+            linkStack.replace('/')
         };
     }, [isAuth, userProfile])
 
@@ -82,8 +82,14 @@ export const AppContextProvider = (props) => {
 
     const handleOnboardSubmit = async (e, user) => {
         e.preventDefault();
+        if (user.name.trim().length < 1) {
+            setOpenStrip(true)
+            setStripMessage("Please enter a valid name");
+            return;
+        }
         try {
 
+            setIsLoading(true)
             const response = await postSignup(user);
 
             if (response.status !== 201) {
@@ -94,12 +100,11 @@ export const AppContextProvider = (props) => {
             }
             setOpenStrip(true)
             setStripMessage("Your are successfully registered with us!");
-            setIsLoading(true)
             getUserProfile().then(data => {
                 console.log(data);
                 setIsAuth(true);
                 setUserProfile({ ...data.userObj })
-                
+                setIsLoading(false);
             });
 
         } catch (error) {

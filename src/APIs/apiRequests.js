@@ -389,6 +389,29 @@ export const putProfileImage = async (file) => {
     }
 }
 
+export const deleteProfileImage = async () => {
+ 
+    try {
+        const token = await GetAuthToken();
+
+        const response = await axios.delete(`${BASE_URL}auth/profileImage`, {},{
+            headers: {
+                authorization: token,
+                timestamp: new Date().getTime(),
+            },
+        });
+
+        console.log(response);
+        
+        return Promise.resolve({data: response.data, status: response.status});
+
+    } catch (ex) {
+       
+        console.log("Error checking admin", ex);
+        return Promise.reject("Server Error");
+    }
+}
+
 
 export const putUsername = async (name) => {
     console.log(name, "FFFFFFFFFFFF")

@@ -17,21 +17,17 @@ function Onboard(props) {
     const [preview, setPreview] = useState()
 
 
-    const {isProfileComplete } = useContext(AppContext)
+    const { stripMessage, setStripMessage, openStrip, setOpenStrip, } = useContext(AppContext)
 
     const [user, setUser] = useState({
         name: "",
         file: ""
     })
 
-    let linkStack = useHistory()
 
     useEffect(() => {
-        // if(isProfileComplete) return linkStack.push('/')
-        // else {
-        //     setOpenStrip(true);
-        //     setStripMessage("You are not registered with us! Please upload your DP and enter name");
-        // }
+        setOpenStrip(true);
+        setStripMessage("Please upload your DP and enter your name");
     }, [])
 
 
@@ -83,7 +79,7 @@ function Onboard(props) {
                         <input type="text" placeholder="Your name" name="contact" onChange={(e) => handleNameChange(e)} />
                     </div>
 
-                    <button className="signup_cardButton" type="submit" >Join Now!</button>
+                    <button className="signup_cardButton" type="submit"  >Join Now!</button>
                 </form>
             </div>
         </div>
