@@ -50,9 +50,7 @@ function App() {
             </Route>
           }
 
-          <Route path="*">
-              <Login/>
-            </Route>
+         
         </Switch>
 
       }

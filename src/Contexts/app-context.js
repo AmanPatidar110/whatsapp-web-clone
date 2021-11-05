@@ -10,7 +10,7 @@ import { linkClasses } from '@mui/material';
 const AppContext = createContext();
 
 export const AppContextProvider = (props) => {
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState(undefined);
 
     const [userProfile, setUserProfile] = useState();
     const [stripMessage, setStripMessage] = useState("");
@@ -33,6 +33,7 @@ export const AppContextProvider = (props) => {
             }
             else {
                 setIsAuth(false);
+                setIsLoading(false)
             }
         });
     }, []);
@@ -68,10 +69,10 @@ export const AppContextProvider = (props) => {
 
     
     useEffect(() => {
-        if (!isAuth) linkStack.replace('/login');
+        if (isAuth !== undefined && !isAuth) linkStack.replace('/login');
         // else if (isAuth  && !userProfile && !isProfileComplete) linkStack.replace('/onboard');
         else if (isAuth && userProfile){ 
-            linkStack.replace('/')
+            linkStack.replace('/')  
         };
     }, [isAuth, userProfile])
 
@@ -83,7 +84,6 @@ export const AppContextProvider = (props) => {
         e.preventDefault();
         try {
 
-            setIsLoading(true)
             const response = await postSignup(user);
 
             if (response.status !== 201) {
@@ -94,11 +94,11 @@ export const AppContextProvider = (props) => {
             }
             setOpenStrip(true)
             setStripMessage("Your are successfully registered with us!");
+            setIsLoading(true)
             getUserProfile().then(data => {
                 console.log(data);
                 setIsAuth(true);
                 setUserProfile({ ...data.userObj })
-                setIsLoading(false);
                 
             });
 
