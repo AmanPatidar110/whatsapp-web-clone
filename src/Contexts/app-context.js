@@ -38,7 +38,7 @@ export const AppContextProvider = (props) => {
     }, []);
     
     useEffect(() => {
-        if (isAuth && user) {
+        if (isAuth) {
             setIsLoading(true);
             checkUser()
             .then((data) => {
@@ -68,13 +68,10 @@ export const AppContextProvider = (props) => {
 
     
     useEffect(() => {
-        setIsLoading(false);
         if (!isAuth) linkStack.replace('/login');
         // else if (isAuth  && !userProfile && !isProfileComplete) linkStack.replace('/onboard');
         else if (isAuth && userProfile){ 
             linkStack.replace('/')
-            
-            setIsLoading(false);
         };
     }, [isAuth, userProfile])
 
@@ -86,6 +83,7 @@ export const AppContextProvider = (props) => {
         e.preventDefault();
         try {
 
+            setIsLoading(true)
             const response = await postSignup(user);
 
             if (response.status !== 201) {
@@ -96,11 +94,11 @@ export const AppContextProvider = (props) => {
             }
             setOpenStrip(true)
             setStripMessage("Your are successfully registered with us!");
-            setIsLoading(true)
             getUserProfile().then(data => {
                 console.log(data);
                 setIsAuth(true);
                 setUserProfile({ ...data.userObj })
+                setIsLoading(false);
                 
             });
 
