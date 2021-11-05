@@ -54,7 +54,7 @@
     position: absolute;
     z-index: 1;
     bottom: 8px;
-    left: 6.5rem;
+    left: 6rem;
     width: 60%;
 }
 
@@ -62,6 +62,10 @@
     color: #88967D;
     width: 100%;
 }
+/* .message.AudioMessage span.css-hovie8-MuiSlider-root span.MuiSlider-thumbColorPrimary.MuiSlider-root {
+    position: relative;
+    left
+} */
 .message.AudioMessage span.css-hovie8-MuiSlider-root span.MuiSlider-thumbColorPrimary,
 .message.AudioMessage span.css-hovie8-MuiSlider-root span.MuiSlider-track {
     color: #88967D;
@@ -89,7 +93,7 @@
 .MessageSnippet.AudioSnippet .message.AudioMessage div.MuiBox-root  {
     position: relative;
     bottom: -2rem;
-    left: 3.3rem;
+    left: 2.7rem;
 }
 
 
