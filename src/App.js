@@ -18,12 +18,10 @@ import { Fragment } from 'react';
 
 function App() {
 
-  const { userProfile, isLoading, isAuth, handleOnboardSubmit, user } = useContext(AppContext);
-  console.log(isLoading);
+  const { userProfile, isLoading, isAuth, handleOnboardSubmit } = useContext(AppContext);
+
 
   return (
-
-
     <div className="App">
 
       {isLoading ? <ProgressBar /> : null}
@@ -31,7 +29,6 @@ function App() {
       {!isLoading &&
 
         <Switch>
-
 
           {!isAuth &&
             <Route path="/login">
@@ -53,9 +50,9 @@ function App() {
             </Route>
           }
 
-          {/* <Route path="*">
+          <Route path="*">
               <Login/>
-            </Route> */}
+            </Route>
         </Switch>
 
       }
