@@ -163,6 +163,9 @@ function AudioSnippet(props) {
                     max={duration ? duration : 0}
                     onChange={(_, value) => setPosition(value)}
                     sx={{
+                        width: "10rem",
+                        position: "absolute",
+                        left: "6.5rem",
                         color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
                         height: 4,
                         '& .MuiSlider-thumb': {
