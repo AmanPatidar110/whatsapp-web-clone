@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 
 import firebaseApp from '../firebaseConfig';
 import firebase from 'firebase/app';
-import { checkUser, getUserProfile, postConvo } from '../APIs/apiRequests';
-import { postSignup } from '../APIs/apiRequests'
-import { linkClasses } from '@mui/material';
+import { checkUser, getUserProfile } from '../APIs/apiRequests';
+import { postSignup } from '../APIs/apiRequests';
+import uuid from 'react-uuid'
+
 
 const AppContext = createContext();
 
@@ -90,8 +91,8 @@ export const AppContextProvider = (props) => {
         try {
 
             setIsLoading(true)
-            const response = await postSignup(user);
-
+            const profileImagePath = await storageOnComplete("images" ,user.file);
+            const response = await postSignup(user.name, profileImagePath);
             if (response.status !== 201) {
                 console.error("Login: handleOnboardSubmit()", response);
                 setOpenStrip(true)
@@ -115,17 +116,38 @@ export const AppContextProvider = (props) => {
     }
 
 
+    const storageOnComplete = async ( mediaFolder ,file) => {
+        // The file param would be a File object from a file selection event in the browser.
+        // See:
+        // - https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
+        // - https://developer.mozilla.org/en-US/docs/Web/API/File
+
+        const metadata = {
+            'contentType': file.type
+        };
+
+        // [START storage_on_complete]
+        const storageRef = firebase.storage().ref();
+        const snapshot = await storageRef.child(`${mediaFolder}/${uuid()}${file.name}`).put(file, metadata);
+
+        const url = await snapshot.ref.getDownloadURL();
+        return url;
+    }
 
 
-    return <AppContext.Provider value={
-        {
-            isAuth, setIsAuth, user,
-            userProfile, setUserProfile,
-            stripMessage, setStripMessage, openStrip, setOpenStrip,
-            isLoading, setIsLoading,
-            Number, setNumber, handleOnboardSubmit
-        }
-    } > {props.children} </AppContext.Provider>
+
+
+
+return <AppContext.Provider value={
+    {
+        isAuth, setIsAuth, user,
+        userProfile, setUserProfile,
+        stripMessage, setStripMessage, openStrip, setOpenStrip,
+        isLoading, setIsLoading,
+        Number, setNumber, handleOnboardSubmit,
+        storageOnComplete
+    }
+} > {props.children} </AppContext.Provider>
 
 }
 

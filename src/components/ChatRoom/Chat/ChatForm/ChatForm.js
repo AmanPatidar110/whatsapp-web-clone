@@ -15,6 +15,8 @@ import ChatRoomContext from '../../../../Contexts/chatRoom-context';
 import ChatContext from '../../../../Contexts/chat-context';
 
 
+import uuid from 'react-uuid'
+
 
 function ChatForm(props) {
 
@@ -25,9 +27,9 @@ function ChatForm(props) {
     const [IsRecording, setIsRecording] = useState(false)
     const [rec, setrec] = useState();
 
-    const {setOpenStrip,  setStripMessage} = useContext(AppContext);
-    const {selectedFile, setSelectedFile, setPreview} = useContext(ChatContext);
-    const { setShowModalMicBlocked} = useContext(ChatRoomContext);
+    const { setOpenStrip, setStripMessage } = useContext(AppContext);
+    const { selectedFile, setSelectedFile, setPreview } = useContext(ChatContext);
+    const { setShowModalMicBlocked } = useContext(ChatRoomContext);
 
     const imgRef = useRef();
     const inputRef = useRef();
@@ -143,8 +145,10 @@ function ChatForm(props) {
                     setTimerId(null);
                     setIsRecording(false);
 
-                    const myFile = new File([blob], "image.jpeg", {
-                        type: blob.type
+                    const audioName = uuid();
+                    const myFile = new File([blob], audioName, {
+                        type: blob.type,
+                        name: audioName
                     });
                     props.handleSend(myFile, "audio", TimeRef.current[0] * 60 + TimeRef.current[1])
                 }

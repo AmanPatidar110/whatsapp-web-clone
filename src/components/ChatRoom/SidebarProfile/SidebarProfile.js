@@ -28,7 +28,7 @@ function SidebarProfile(props) {
     const [editAbout, seteditAbout] = useState(false);
     const [isImageLoading, setisImageLoading] = useState(false);
 
-    const { userProfile, setUserProfile, setOpenStrip, setStripMessage } = useContext(AppContext);
+    const { userProfile, setUserProfile, setOpenStrip, setStripMessage, storageOnComplete } = useContext(AppContext);
 
     const onFileChange = async (e) => {
 
@@ -51,15 +51,12 @@ function SidebarProfile(props) {
             return;
         }
         try {
-            setisImageLoading(true)
-            const response = await putProfileImage(e.target.files[0]);
-            if (response.status === 200) {
-                setUserProfile(prev => {
-                    return { ...prev, profileImagePath: response.data.profileImagePath }
-                });
-            } else {
-                throw new Error("Something went worng!")
-            }
+            setisImageLoading(true);
+            const profileImagePath = await storageOnComplete("images", e.target.files[0]);
+            setUserProfile(prev => {
+                return { ...prev, profileImagePath: profileImagePath }
+            });
+            putProfileImage(profileImagePath);
         } catch (error) {
             console.log(error);
             setOpenStrip(true);

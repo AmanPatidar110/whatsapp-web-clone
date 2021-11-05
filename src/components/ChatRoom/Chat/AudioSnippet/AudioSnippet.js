@@ -130,7 +130,7 @@ function AudioSnippet(props) {
         <div className={props.className + " chat_message MessageSnippet AudioSnippet"} >
             <div className="message AudioMessage">
 
-                {you ? <img src={you._id === props.msg.by ? you.profileImagePath : userProfile.profileImagePath} alt="You"></img> : <Avatar />}
+                {you &&  you.profileImagePath &&  userProfile.profileImagePath ? <img src={you._id === props.msg.by ? you.profileImagePath : userProfile.profileImagePath} alt="You"></img> : <Avatar />}
 
                 <span className="MicIcon"> <MicIcon /> </span>
 

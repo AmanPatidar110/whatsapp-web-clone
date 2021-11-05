@@ -18,7 +18,7 @@ function Onboard(props) {
     const [preview, setPreview] = useState()
 
 
-    const { setOpenStrip, stripMessage, setStripMessage} = useContext(AppContext)
+    const { setOpenStrip, stripMessage, setStripMessage, storageOnComplete} = useContext(AppContext)
 
     const [user, setUser] = useState({
         name: "",

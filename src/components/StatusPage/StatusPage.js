@@ -19,7 +19,7 @@ export const StatusPlayerContext = createContext();
 function StatusPage() {
 
     const { showStatusPage, setShowStatusPage } = useContext(ChatRoomContext);
-    const { userProfile, setOpenStrip, setStripMessage } = useContext(AppContext);
+    const { userProfile, setOpenStrip, setStripMessage, storageOnComplete } = useContext(AppContext);
 
 
 
@@ -62,7 +62,9 @@ function StatusPage() {
 
     const handleStatusUpload = async (caption) => {
         try {
-            const response = await postStatus(MyStatusFile, caption);
+
+            const statusImagePath = await storageOnComplete('status', MyStatusFile);
+            const response = await postStatus(statusImagePath, caption);
 
             if (response.status === 200) {
                 setOpenStrip(true);

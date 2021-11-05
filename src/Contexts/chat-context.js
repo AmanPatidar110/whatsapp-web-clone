@@ -20,10 +20,8 @@ export const ChatContextProvider = (props) => {
 
     const chatBodyRef = useRef();
 
-    const { messages, setMessages, requestMessages } = useContext(ChatRoomContext);
-    const { userProfile, setOpenStrip, setStripMessage } = useContext(AppContext);
-    const { selectedConvo, setSelectedConvo } = useContext(ChatRoomContext);
-    const { chatList, setChatList } = useContext(ChatRoomContext);
+    const { userProfile, setOpenStrip, setStripMessage, storageOnComplete } = useContext(AppContext);
+    const { messages, setMessages, requestMessages, selectedConvo, setSelectedConvo, chatList, setChatList } = useContext(ChatRoomContext);
 
     const [render, setRender] = useState();
     const [status, setStatus] = useState();
@@ -97,7 +95,7 @@ export const ChatContextProvider = (props) => {
         }
 
         if (data && userProfile && data.online) {
-                postSetReceivedMessages(userProfile.userId, data.userId)
+            postSetReceivedMessages(userProfile.userId, data.userId)
         }
 
     }
@@ -150,7 +148,7 @@ export const ChatContextProvider = (props) => {
     }
 
     const handleSend = async (data, type, audioDuration) => {
-       
+
         const receiver = selectedConvo.members.filter((mem) => mem._id !== userProfile.userId)[0]._id;
 
         const msg = {
@@ -185,57 +183,50 @@ export const ChatContextProvider = (props) => {
 
         setSelectedConvo({ ...selectedConvo, lastMessage: { ...msg } })
 
-        const formData = new FormData();
+   
+        let audioUrl;
+        let imageUrl;
+
         if (selectedFile) {
-            formData.append("ImageUpload", selectedFile, selectedFile.name);
-        }
-        if (type === 'audio') {
-            console.log("handleSend: ", data)
-            formData.append("AudioUpload", data, "myfile");
-            formData.append("audioDuration", audioDuration);
+            imageUrl = await storageOnComplete('images', selectedFile);
+            console.log(imageUrl);
         }
 
-        console.log("PREPARING MESSAGE", msg.by, msg.text, msg.type, msg.messageStatus);
-        formData.append("convoId", selectedConvo._id);
-        formData.append("uuid", msg.uuid);
-        formData.append("text", msg.text);
-        formData.append("type", msg.type);
-        formData.append("by", msg.by);
-        formData.append("messageStatus", msg.messageStatus);
+        if (type === 'audio') {
+            audioUrl = await storageOnComplete('voiceNotes', data);
+        }
+
+        const postData = {
+            convoId: selectedConvo._id,
+            uuid: msg.uuid,
+            text: msg.text,
+            type: msg.type,
+            by: msg.by,
+            messageStatus: msg.messageStatus,
+            audioPath: audioUrl,
+            imgPath: imageUrl,
+            audioDuration: audioDuration,
+        }
+
 
         let msgData;
-        if (msg.type === "audio") {
-            try {
-                const response = await postAudioMessage(formData, selectedConvo._id);
-                if (response.status !== 200) {
-                    setOpenStrip(true);
-                    setStripMessage("Error sending message");
-                    return;
-                }
-                msgData = response.data.result;
-            } catch (error) {
-                console.log(error);
+
+
+        try {
+
+            const response = await postMessage({...postData});
+            if (response.status !== 200) {
                 setOpenStrip(true);
-                setStripMessage(error);
+                setStripMessage("Error sending message");
+                return;
             }
+            msgData = response.data.result;
+        } catch (error) {
+            console.log(error);
+            setOpenStrip(true);
+            setStripMessage(error);
         }
 
-        else {
-            try {
-
-                const response = await postMessage(formData, selectedConvo._id);
-                if (response.status !== 200) {
-                    setOpenStrip(true);
-                    setStripMessage("Error sending message");
-                    return;
-                }
-                msgData = response.data.result;
-            } catch (error) {
-                console.log(error);
-                setOpenStrip(true);
-                setStripMessage(error);
-            }
-        }
         setSelectedFile(undefined);
 
         if (msgData.type === "image" || msgData.type === 'audio') {
@@ -248,7 +239,7 @@ export const ChatContextProvider = (props) => {
 
     return <ChatContext.Provider value={
         {
-            y, status, setStatus, selectedFile, 
+            y, status, setStatus, selectedFile,
             setSelectedFile, preview, setPreview, chatBodyRef, handleSend, render
         }}
     > {props.children} </ChatContext.Provider>

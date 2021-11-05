@@ -76,22 +76,16 @@ export const getMessages = async (convoId) => {
 }
 
 
-export const postMessage = async (data, convoId) => {
+export const postMessage = async (data) => {
     try {
 
-        console.log(convoId);
-
         const token = await GetAuthToken();
-        const response = await axios.post(`${BASE_URL}chat/${convoId}`, data ,{
+        const response = await axios.post(`${BASE_URL}chat/${data.convoId}`, data ,{
             headers: {
-                Accept: 'application/json',
-                'enctype': 'multipart/form-data',
                 authorization: token,
                 timestamp: new Date().getTime(),
             },
         });
-
-        console.log(response);
 
         return Promise.resolve({data: response.data, status: response.status});
         
@@ -102,28 +96,28 @@ export const postMessage = async (data, convoId) => {
     }
 }
 
-export const postAudioMessage = async (data, convoId) => {
-    try {
-        const token = await GetAuthToken();
-        const response = await axios.post(`${BASE_URL}chat/audio/${convoId}`, data ,{
-            headers: {
-                Accept: 'application/json',
-                'enctype': 'multipart/form-data',
-                authorization: token,
-                timestamp: new Date().getTime(),
-            },
-        });
+// export const postAudioMessage = async (data) => {
+//     try {
+//         const token = await GetAuthToken();
+//         const response = await axios.post(`${BASE_URL}chat/audio/${data.convoId}`, data ,{
+//             headers: {
+//                 Accept: 'application/json',
+//                 'enctype': 'multipart/form-data',
+//                 authorization: token,
+//                 timestamp: new Date().getTime(),
+//             },
+//         });
 
-        console.log("postAudioMessage", response);
+//         console.log("postAudioMessage", response);
 
-        return Promise.resolve({data: response.data, status: response.status});
+//         return Promise.resolve({data: response.data, status: response.status});
         
-    } catch (ex) {
+//     } catch (ex) {
        
-        console.log("Error checking admin", ex);
-        return Promise.reject("Server Error");
-    }
-}
+//         console.log("Error checking admin", ex);
+//         return Promise.reject("Server Error");
+//     }
+// }
 
 export const postIncrementUnseenCount = async (convoId) => {
     try {
@@ -310,17 +304,12 @@ export const postConvo = async (number) => {
     }
 }
 
-export const postStatus = async (file, caption) => {
-    console.log(file, "FFFFFFFFFFFF")
-    const formData = new FormData();
-    if (file) {
-        formData.append("ImageUpload", file, file.name);
-    }
-    formData.append("caption", caption);
+export const postStatus = async (statusImagePath, caption) => {
+
     try {
         const token = await GetAuthToken();
 
-        const response = await axios.post(`${BASE_URL}status`,formData,{
+        const response = await axios.post(`${BASE_URL}status`,{statusImagePath, caption},{
             headers: {
                 authorization: token,
                 timestamp: new Date().getTime(),
@@ -362,16 +351,12 @@ export const putStatusView = async (statusId) => {
 }
 
 
-export const putProfileImage = async (file) => {
-    console.log(file, "FFFFFFFFFFFF")
-    const formData = new FormData();
-    if (file) {
-        formData.append("ImageUpload", file, file.name);
-    }
+export const putProfileImage = async (profileImagePath) => {
+
     try {
         const token = await GetAuthToken();
 
-        const response = await axios.put(`${BASE_URL}auth/profileImage`,formData,{
+        const response = await axios.put(`${BASE_URL}auth/profileImage`,{profileImagePath},{
             headers: {
                 authorization: token,
                 timestamp: new Date().getTime(),
@@ -394,7 +379,7 @@ export const deleteProfileImage = async () => {
     try {
         const token = await GetAuthToken();
 
-        const response = await axios.delete(`${BASE_URL}auth/profileImage`, {},{
+        const response = await axios.delete(`${BASE_URL}auth/profileImage`,{
             headers: {
                 authorization: token,
                 timestamp: new Date().getTime(),
@@ -515,18 +500,13 @@ export const getChatList = async () => {
 
 
 
-export const postSignup = async (userData) => {
+export const postSignup = async (name, profileImagePath) => {
     
-    const formData = new FormData();
-    if (userData.file) {
-        formData.append("ImageUpload", userData.file, userData.file.name);
-    }
-    formData.append("name", userData.name);
-    
+
     try {
         const token = await GetAuthToken();
         console.log(token, ".......................")
-        const response = await axios.post(`${BASE_URL}auth/signup`, formData, {
+        const response = await axios.post(`${BASE_URL}auth/signup`, {name, profileImagePath}, {
             headers: {
                 authorization: token,
                 timestamp: new Date().getTime(),
