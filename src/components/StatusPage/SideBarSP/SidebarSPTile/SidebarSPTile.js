@@ -29,7 +29,7 @@ function SidebarSPTile(props) {
             </div>
             <div className="tileInfo">
                 <p>{props.name}</p>
-               { props.createdAt ? <p className="tileTime">{temp.getDate === (new Date()).getDate ? "Today" : "Yesterday"} at {temp.getHours() > 12 ? temp.getHours() - 12 : temp.getHours()}:{temp.getMinutes() > 9 ? temp.getMinutes(): `0${temp.getMinutes()}`} {temp.getHours() > 12 ? "PM": "AM"}</p>
+               { props.createdAt ? <p className="tileTime">{temp.getDate() === (new Date()).getDate() ? "Today" : "Yesterday"} at {temp.getHours() > 12 ? temp.getHours() - 12 : temp.getHours()}:{temp.getMinutes() > 9 ? temp.getMinutes(): `0${temp.getMinutes()}`} {temp.getHours() > 12 ? "PM": "AM"}</p>
                :
                <p className="tileTime" >No updates</p>
                }
