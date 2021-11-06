@@ -16,8 +16,8 @@ import { putStatusView } from '../../APIs/apiRequests';
 import ChatRoomContext from '../../Contexts/chatRoom-context';
 
 function StatusPlayer(props) {
-    const [selectedStatusArray, setselectedStatusArray, mainIndex, setMainIndex, subIndex, setsubIndex, showMyStatus, setshowMyStatus] = useContext(StatusPlayerContext);
-    const {showStatusPage, setShowStatusPage} = useContext(ChatRoomContext);
+    const { selectedStatusArray, setselectedStatusArray, mainIndex, setMainIndex, subIndex, setsubIndex, showType, setshowType, viewedStatusList, setviewedStatusList, statusList, setStatusList } = useContext(StatusPlayerContext);
+    const { showStatusPage, setShowStatusPage } = useContext(ChatRoomContext);
 
 
 
@@ -36,6 +36,8 @@ function StatusPlayer(props) {
             setshowPrev(mainIndex <= 0 && subIndex <= 0 ? false : true);
             setshowNext(mainIndex >= props.statusList.length - 1 && subIndex >= selectedStatusArray.length - 1 ? false : true);
         }
+
+        console.log(props.statusList[mainIndex], mainIndex);
 
     }, [mainIndex, subIndex])
 
@@ -58,7 +60,7 @@ function StatusPlayer(props) {
             setTime(11);
         }
 
-        if (!showMyStatus) {
+        if (showType !== "MY") {
             putStatusView(selectedStatusArray[subIndex]._id)
         }
     }, [selectedStatusArray, mainIndex, subIndex])
@@ -98,11 +100,11 @@ function StatusPlayer(props) {
                 return
             }
             else {
-                if (showMyStatus) {
+                if (showType === "MY") {
                     setselectedStatusArray(props.statusList[mainIndex + 1].statusArray)
                     setMainIndex(prev => prev + 1);
                     setsubIndex(0);
-                    
+
                 }
 
                 isTimerPlaying(true);
@@ -138,27 +140,30 @@ function StatusPlayer(props) {
                 <header>
                     <div className="headerUp">
 
-                        <div className="headerLeft" onClick={() => { setselectedStatusArray([]); setshowMyStatus(false) }}>
+                        <div className="headerLeft" onClick={() => { setselectedStatusArray([]); setshowType("") }}>
                             <ArrowBackIcon />
                         </div>
                         <div className="headerMid">
                             {progressBars}
-
                         </div>
                         <div className="headerRight" onClick={() => {
                             setShowStatusPage(false);
-                            setshowMyStatus(false)
+                            setshowType("")
                             setselectedStatusArray([]);
                         }}>
                             <CloseIcon />
                         </div>
                     </div>
                     <div className="headerDown">
-                        <p> {showMyStatus ? "You" : props.statusList[mainIndex]?.user.name} </p>
+                        <p>
+                            {showType === "MY" ? "You" : null}
+                            {showType === "RECENT" ?  statusList[mainIndex]?.user.name : null}
+                            {showType === "VIEWED" ?  viewedStatusList[mainIndex]?.user.name : null}
+                        </p>
                         <p style={{ fontSize: "0.7rem", marginTop: '0.4rem' }}> {temp.getDate() === (new Date()).getDate() ? "Today" : "Yesterday"} at {temp.getHours() > 12 ? temp.getHours() - 12 : temp.getHours()}:{temp.getMinutes() > 9 ? temp.getMinutes() : `0${temp.getMinutes()}`} {temp.getHours() > 12 ? "PM" : "AM"}</p>
                     </div>
                 </header>
-                <div className="statusImage" style={{ background: showMyStatus ? `center / contain no-repeat url(${selectedStatusArray[subIndex].statusImagePath})` : `center / contain no-repeat url(${selectedStatusArray[subIndex].statusImagePath})` }} >
+                <div className="statusImage" style={{ background: showType === "MY" ? `center / contain no-repeat url(${selectedStatusArray[subIndex].statusImagePath})` : `center / contain no-repeat url(${selectedStatusArray[subIndex].statusImagePath})` }} >
                     {time !== -1 && time !== 11 ?
                         <div className="timer-wrapper">
                             <CountdownCircleTimer
@@ -174,10 +179,10 @@ function StatusPlayer(props) {
 
                         </div>
                         :
-                            <span className="timer-wrapper" >
+                        <span className="timer-wrapper" >
                             {"❤"}
-                            </span>
-                            }
+                        </span>
+                    }
 
                     {showPrev ? <div className="ChevronLeftIcon" onClick={handlePrev} >
                         <ChevronLeftIcon />

@@ -5,7 +5,7 @@ import './MyStatusUpdates.css';
 function MyStatusUpdates(props) {
 
     const temp = new Date(props.createdAt);
-    const [selectedStatusArray, setselectedStatusArray, mainIndex, setMainIndex, subIndex, setsubIndex, showMyStatus, setshowMyStatus] = useContext(StatusPlayerContext);
+    const {selectedStatusArray, setselectedStatusArray, mainIndex, setMainIndex, subIndex, setsubIndex, showMyStatus, setshowMyStatus} = useContext(StatusPlayerContext);
 
 
     const handleClick = () => {

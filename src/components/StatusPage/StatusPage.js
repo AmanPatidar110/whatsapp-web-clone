@@ -30,7 +30,7 @@ function StatusPage() {
     const [selectedStatusArray, setselectedStatusArray] = useState([]);
     const [mainIndex, setMainIndex] = useState();
     const [subIndex, setsubIndex] = useState();
-    const [showMyStatus, setshowMyStatus] = useState(false);
+    const [showType, setshowType] = useState("");
 
     const [allMyStatus, setallMyStatus] = useState([]);
 
@@ -89,11 +89,11 @@ function StatusPage() {
             transform: showStatusPage ? 'translateX(0)' : 'translateX(100vw)',
             opacity: showStatusPage ? '1' : '0'
         }}>
-            <StatusPlayerContext.Provider value={[selectedStatusArray, setselectedStatusArray, mainIndex, setMainIndex, subIndex, setsubIndex, showMyStatus, setshowMyStatus]} >
+            <StatusPlayerContext.Provider value={{selectedStatusArray, setselectedStatusArray, mainIndex, setMainIndex, subIndex, setsubIndex, showType, setshowType, viewedStatusList, setviewedStatusList, statusList, setStatusList }} >
 
 
 
-                <SideBarSP allMyStatus={allMyStatus} MyStatusFile={MyStatusFile} setMyStatusFile={setMyStatusFile} setPreview={setPreview} statusList={statusList} viewedStatusList={viewedStatusList} />
+                <SideBarSP  allMyStatus={allMyStatus} MyStatusFile={MyStatusFile} setMyStatusFile={setMyStatusFile} setPreview={setPreview} statusList={statusList} viewedStatusList={viewedStatusList} />
 
                 {preview ?
                     <div className="previewBackdrop">

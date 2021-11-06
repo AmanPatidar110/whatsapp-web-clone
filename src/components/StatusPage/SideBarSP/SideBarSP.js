@@ -52,7 +52,7 @@ function SideBarSP(props) {
     return (
         <div className="SideBarSP">
             <div className="SidebarProfile_Header">
-                <SidebarSPTile name={"My Status"} statusArray={props.allMyStatus} createdAt={props.allMyStatus.length > 0 ? props.allMyStatus[props.allMyStatus?.length - 1]?.createdAt : null} imagePath={props.allMyStatus.length > 0 ? props.allMyStatus[props.allMyStatus?.length - 1].statusImagePath : null} mainIndex={0} />
+                <SidebarSPTile type="MY" name={"My Status"} statusArray={props.allMyStatus} createdAt={props.allMyStatus.length > 0 ? props.allMyStatus[props.allMyStatus?.length - 1]?.createdAt : null} imagePath={props.allMyStatus.length > 0 ? props.allMyStatus[props.allMyStatus?.length - 1].statusImagePath : null} mainIndex={0} />
 
                 <div className="addStatusButton" onClick={() => { imgRef.current.click() }}>
                     <input ref={imgRef} hidden={true} className="file-upload" type="file" onChange={(e) => onFileChange(e)} />
@@ -70,7 +70,7 @@ function SideBarSP(props) {
                 }
                 {
                     props.statusList ?
-                        props.statusList.map((single, index) => <SidebarSPTile key={single.user._id} name={single.user.name} statusArray={single.statusArray} createdAt={single.statusArray[single.statusArray.length - 1].createdAt} imagePath={single.statusArray[single.statusArray.length - 1].statusImagePath} mainIndex={index} />)
+                        props.statusList.map((single, index) => <SidebarSPTile type="RECENT" key={single.user._id} name={single.user.name} statusArray={single.statusArray} createdAt={single.statusArray[single.statusArray.length - 1].createdAt} imagePath={single.statusArray[single.statusArray.length - 1].statusImagePath} mainIndex={index} />)
                         : null
                 }
 
@@ -83,7 +83,7 @@ function SideBarSP(props) {
                 }
                 {
                     props.viewedStatusList ?
-                        props.viewedStatusList.map((single, index) => <SidebarSPTile key={single.user._id} name={single.user.name} statusArray={single.statusArray} createdAt={single.statusArray[single.statusArray.length - 1].createdAt} imagePath={single.statusArray[single.statusArray.length - 1].statusImagePath} mainIndex={index} />) : null
+                        props.viewedStatusList.map((single, index) => <SidebarSPTile type="VIEWED" key={single.user._id} name={single.user.name} statusArray={single.statusArray} createdAt={single.statusArray[single.statusArray.length - 1].createdAt} imagePath={single.statusArray[single.statusArray.length - 1].statusImagePath} mainIndex={index} />) : null
                 }
 
             </div>
