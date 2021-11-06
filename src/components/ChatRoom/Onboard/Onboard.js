@@ -61,8 +61,22 @@ function Onboard(props) {
             setSelectedFile(undefined)
             return
         }
-        setSelectedFile(e.target.files[0])
+        
+        const typeArray = [
+            'image/png',
+            'image/jpeg',
+            'image/jpg',
+            
+        ]
+        const fileType = e.target.files[0].type;
 
+        if (!typeArray.includes(fileType)) {
+            setOpenStrip(true);
+            setStripMessage("Please select appropriate image file type");
+            return;
+        } 
+        
+        setSelectedFile(e.target.files[0])
     }
 
 
