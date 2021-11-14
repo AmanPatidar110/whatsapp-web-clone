@@ -5,7 +5,10 @@ import firebaseApp from '../firebaseConfig';
 import firebase from 'firebase/app';
 import { checkUser, getUserProfile } from '../APIs/apiRequests';
 import { postSignup } from '../APIs/apiRequests';
-import uuid from 'react-uuid'
+import uuid from 'react-uuid';
+
+import imageCompression from 'browser-image-compression';
+
 
 
 const AppContext = createContext();
@@ -91,7 +94,7 @@ export const AppContextProvider = (props) => {
         try {
 
             setIsLoading(true)
-            const profileImagePath = await storageOnComplete("images" ,user.file);
+            const profileImagePath = await storageOnComplete("images", user.file);
             const response = await postSignup(user.name, profileImagePath);
             if (response.status !== 201) {
                 console.error("Login: handleOnboardSubmit()", response);
@@ -116,7 +119,7 @@ export const AppContextProvider = (props) => {
     }
 
 
-    const storageOnComplete = async ( mediaFolder ,file) => {
+    const storageOnComplete = async (mediaFolder, file) => {
         // The file param would be a File object from a file selection event in the browser.
         // See:
         // - https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
@@ -126,28 +129,42 @@ export const AppContextProvider = (props) => {
             'contentType': file.type
         };
 
-        // [START storage_on_complete]
-        const storageRef = firebase.storage().ref();
-        const snapshot = await storageRef.child(`${mediaFolder}/${uuid()}${file.name}`).put(file, metadata);
 
-        const url = await snapshot.ref.getDownloadURL();
-        return url;
+        const options = {
+            maxSizeMB: 0.2,
+            maxWidthOrHeight: 1920,
+            useWebWorker: true
+        }
+        try {
+            const compressedFile = await imageCompression(file, options);// true
+            console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+
+
+            // [START storage_on_complete]
+            const storageRef = firebase.storage().ref();
+            const snapshot = await storageRef.child(`${mediaFolder}/${uuid()}${compressedFile.name}`).put(compressedFile, metadata);
+
+            const url = await snapshot.ref.getDownloadURL();
+            return url;
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
 
 
 
-return <AppContext.Provider value={
-    {
-        isAuth, setIsAuth, user,
-        userProfile, setUserProfile,
-        stripMessage, setStripMessage, openStrip, setOpenStrip,
-        isLoading, setIsLoading,
-        Number, setNumber, handleOnboardSubmit,
-        storageOnComplete
-    }
-} > {props.children} </AppContext.Provider>
+    return <AppContext.Provider value={
+        {
+            isAuth, setIsAuth, user,
+            userProfile, setUserProfile,
+            stripMessage, setStripMessage, openStrip, setOpenStrip,
+            isLoading, setIsLoading,
+            Number, setNumber, handleOnboardSubmit,
+            storageOnComplete
+        }
+    } > {props.children} </AppContext.Provider>
 
 }
 
