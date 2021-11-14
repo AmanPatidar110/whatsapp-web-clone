@@ -33,8 +33,6 @@ export const ChatContextProvider = (props) => {
 
     const scrollRef = useRef();
 
-
-
     useEffect(() => {
         if (selectedConvo && userProfile && y) {
             postSetSeenMessages(y._id, userProfile.userId, selectedConvo._id).then(response => {
@@ -85,7 +83,7 @@ export const ChatContextProvider = (props) => {
             setChatList(prevChatList => {
                 const temp = [...prevChatList];
                 const newChat = temp.map(convo => {
-                    if (convo.members.some(mem => mem._id === data.userId) && convo.lastMessage && convo.lastMessage.messageStatus === "SENT") convo.lastMessage.messageStatus = "RECEIVED"
+                    if (convo.members?.some(mem => mem._id === data.userId) && convo.lastMessage && convo.lastMessage.messageStatus === "SENT") convo.lastMessage.messageStatus = "RECEIVED"
                     return convo;
                 })
 
@@ -167,6 +165,7 @@ export const ChatContextProvider = (props) => {
         setChatList(prevChatList => {
             const temp = [...prevChatList];
             const indx = temp.findIndex(conv => conv._id === msg.conversationId);
+
             temp[indx].lastMessage = msg;
 
             const tempConvo = temp[indx];
@@ -229,7 +228,7 @@ export const ChatContextProvider = (props) => {
 
         setSelectedFile(undefined);
 
-        if (msgData.type === "image" || msgData.type === 'audio') {
+        if (msgData?.type === "image" || msgData?.type === 'audio') {
             socket.emit("sendMessage", { ...msg, receiverId: receiver });
             requestMessages(msgData.conversationId);
         }

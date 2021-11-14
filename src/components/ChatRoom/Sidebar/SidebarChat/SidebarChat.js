@@ -25,7 +25,6 @@ function SidebarChat(props) {
         if (props.chat.lastMessage)
             setLastMessage(props.chat.lastMessage)
 
-        console.log(props.chat);
 
         const temp = props.chat.members;
         const y = temp?.find((mem) => mem._id !== props.me);

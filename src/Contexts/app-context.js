@@ -17,7 +17,7 @@ export const AppContextProvider = (props) => {
     const [stripMessage, setStripMessage] = useState("");
     const [openStrip, setOpenStrip] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [Number, setNumber] = useState();
+    const [Number, setNumber] = useState("");
     const [user, setuser] = useState();
 
 

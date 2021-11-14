@@ -15,21 +15,20 @@ import 'firebase/auth';
 
 import OTPInput from './OTPInput/OTPInput';
 import PhoneNumberInput from './PhoneNumberInput/PhoneNumberInput';
-import { postConvo, postSignup } from '../../APIs/apiRequests';
-import Onboard from '../Onboard/Onboard';
+
 
 
 
 export const AuthLoadingContext = createContext();
 
 function Login() {
-    const { setOpenStrip, setStripMessage, isAuth, isProfileComplete } = useContext(AppContext);
+    const { setOpenStrip, setStripMessage } = useContext(AppContext);
     const { Number, setNumber } = useContext(AppContext)
-    const { setIsAuth, setIsProfileComplete } = useContext(AppContext);
+    const { setIsAuth } = useContext(AppContext);
 
     const [authLoading, setAuthLoading] = useState(false);
     const confirmationResultRef = useRef();
-
+    const [isLoading, setisLoading] = useState(false);
 
     const linkStack = useHistory();
 
@@ -55,13 +54,13 @@ function Login() {
 
     const onPhoneSubmitHandler = (e) => {
         e.preventDefault();
-        console.log(Number);
-        if (Number === "") {
+        if (Number.length <= 8) {
             setStripMessage("Enter a valid phone number.")
             setOpenStrip(true);
             setAuthLoading(false)
             return;
         }
+        setisLoading(true);
 
         captcha()
         const phoneNumber = Number;
@@ -75,18 +74,25 @@ function Login() {
                 // ...
                 setNumber(null)
                 console.log(error);
+            }).finally(() => {
+                setisLoading(false);
+
             });
     }
 
 
     const onSubmitOtp = async (otp) => {
 
+        setisLoading(true);
         confirmationResultRef.current.confirm(otp).then((result) => {
             setIsAuth(true);
         })
             .catch((error) => {
                 console.log(error);
                 alert("Incorrect OTP");
+            }).finally(() => {
+                setisLoading(false);
+
             });
     };
 
@@ -99,9 +105,9 @@ function Login() {
 
                 <AuthLoadingContext.Provider value={[authLoading, setAuthLoading]} >
                     <Switch>
-                        <Route exact={true} path="/login/otp"> <OTPInput onSubmitOtp={onSubmitOtp} onPhoneSubmitHandler={onPhoneSubmitHandler} /> </Route>
-                        <Route path="/login"> <PhoneNumberInput onPhoneSubmitHandler={onPhoneSubmitHandler} /> </Route>
-                       
+                        <Route exact={true} path="/login/otp"> <OTPInput onSubmitOtp={onSubmitOtp} onPhoneSubmitHandler={onPhoneSubmitHandler} isLoading={isLoading} /> </Route>
+                        <Route path="/login"> <PhoneNumberInput onPhoneSubmitHandler={onPhoneSubmitHandler} isLoading={isLoading} /> </Route>
+
                     </Switch>
                 </AuthLoadingContext.Provider>
 

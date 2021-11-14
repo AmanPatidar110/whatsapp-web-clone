@@ -4,6 +4,8 @@ import PhoneInput from 'react-phone-input-2';
 import logo from "../../../Assests/images/whlogo.png";
 import  AppContext from '../../../Contexts/app-context';
 import { useContext } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 function PhoneNumberInput(props) {
@@ -29,7 +31,7 @@ function PhoneNumberInput(props) {
                 />
 
 
-                <button type="submit" className="login_cardButton" disabled={false} >GET OTP</button>
+                <button type="submit" className="login_cardButton" disabled={props.isLoading} >{ props.isLoading ? <CircularProgress  size={"1.1rem"}  style={{ color: "green"}}/> : "GET OTP"}</button>
             </form>
         </Fragment>
     )

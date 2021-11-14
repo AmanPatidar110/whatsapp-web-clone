@@ -31,7 +31,7 @@ function EmojiPicker(props) {
             return;
         }
 
-        if (!props.pickerIconRef.current.contains(e.target))
+        if (!props.pickerIconRef.current?.contains(e.target))
             props.setOpenEPicker(false)
     };
 

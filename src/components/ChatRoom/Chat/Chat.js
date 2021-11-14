@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState, createContext } from 'react';
+import React, { useContext} from 'react';
 
 import { Avatar, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -9,7 +9,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import './Chat.css';
 import ChatForm from './ChatForm/ChatForm';
-import MessageSnippet from './MessageSnippet/MessageSnippet.js';
 
 
 import ImagePreview from '../../../UtilComponents/ImagePreview/ImagePreview';
@@ -45,10 +44,9 @@ const Chat = (props) => {
                     <IconButton>
                         <AttachFileIcon />
                     </IconButton>
-                    <IconButton>
+                   
                         <LongMenu setShowSidebarFriendProfile={props.setShowSidebarFriendProfile} />
                         {/* <MoreVertIcon /> */}
-                    </IconButton>
                 </section>
 
                 {isChatLoading ?

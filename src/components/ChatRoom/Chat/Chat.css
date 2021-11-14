@@ -35,6 +35,11 @@
     position: relative;
 }
 
+.chat_header .chat_headerIcons{
+    display: flex;
+    align-items: center;
+}
+
 .chat_header img {
     height: 2.7rem;
     width: 2.7rem;

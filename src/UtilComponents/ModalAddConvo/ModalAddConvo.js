@@ -8,7 +8,9 @@ import { postConvo } from '../../APIs/apiRequests';
 
 
 import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
+import 'react-phone-input-2/lib/style.css';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 import { getChatList } from '../../APIs/apiRequests';
 import AppContext from '../../Contexts/app-context';
@@ -24,16 +26,18 @@ const ModalAddConvo = () => {
     const{ setChatList} = useContext(ChatRoomContext);
 
 
-    const [number, setNumber] = useState();
+    const [number, setNumber] = useState("");
+    const [isLoading, setisLoading] = useState(false);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        if (number) {
+        if (number.length > 8) {
+            setisLoading(true);
             postConvo("+" + number).then(async response => {
-                console.log(response?.data.selectedConvo);
                 if (response?.status === 202) {
                     setOpenStrip(true);
-                    setStripMessage(response.data.message)
+                    setStripMessage(response.data.message);
+                    setisLoading(false)
                     return;
                 }
                 else if (response?.status === 200 || response?.status === 201) {
@@ -53,9 +57,15 @@ const ModalAddConvo = () => {
                         setStripMessage(error);
                     }
                 }
+                setisLoading(false)
             
             });
 
+        }
+        else {
+                setStripMessage("Enter a valid phone number.")
+                setOpenStrip(true);
+                return;
         }
     }
 
@@ -77,7 +87,7 @@ const ModalAddConvo = () => {
                             onKeyDown={(e) => { if (e.key === "Enter") onSubmitHandler(e) }}
                         />
 
-                        <button type="submit" className="login_cardButton" onClick={(e) => onSubmitHandler(e)}  >Chat</button>
+                        <button type="submit" className="login_cardButton" disabled={isLoading} onClick={(e) => onSubmitHandler(e)} > { isLoading ? <CircularProgress  size={"1.1rem"}  style={{ color: "green"}}/> : "CHAT"}</button>
                     </form>
                 </div>
             </div>

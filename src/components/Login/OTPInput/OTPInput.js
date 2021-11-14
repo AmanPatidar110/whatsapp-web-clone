@@ -9,12 +9,12 @@ import 'react-phone-input-2/lib/style.css'
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AppContext  from '../../../Contexts/app-context';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
 function OTPinput(props) {
 
-    const [loading, ] = useState(false);
     const [otp, setOtp] = useState()
     const {Number} = useContext(AppContext)
 
@@ -52,7 +52,7 @@ function OTPinput(props) {
                 </div>
                     <p onClick={(e) => {props.onPhoneSubmitHandler(e)}} >Resend OTP</p>
 
-                <button type="submit" className="login_cardButton" disabled={loading} >Continue</button>
+                <button type="submit" className="login_cardButton" disabled={props.isLoading} >{ props.isLoading ? <CircularProgress size={"1.1rem"}  style={{ color: "green"}}/> : "Continue"}</button>
             </form>
         </Fragment>
     )
