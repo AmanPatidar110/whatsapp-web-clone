@@ -2,7 +2,7 @@ import axios from 'axios';
 import GetAuthToken from '../UtilComponents/authManager';
 
 // const BASE_URL = 'http://localhost:5000/';
-const BASE_URL = 'https://whatsapp-web-clone-3.herokuapp.com/';
+const BASE_URL = 'https://whatsapp-web-clone-uqjd.onrender.com/';
 
 
 export const checkUser = async () => {
